@@ -49,9 +49,9 @@ const TENTHS_LESS_THAN_HUNDRED: readonly string[] = [
   'ninety',
 ];
 
-function toWords(number: string, asOrdinal?: boolean): string | number {
+function toWords(number: string | number, asOrdinal?: boolean): string {
   var words;
-  var num = parseInt(number, 10);
+  var num = parseInt(String(number), 10);
 
   if (!isFiniteCustom(num)) {
     throw new TypeError('Not a finite number: ' + number + ' (' + typeof number + ')');
@@ -66,10 +66,6 @@ function toWords(number: string, asOrdinal?: boolean): string | number {
 function generateWords(number: number, words: ReadonlyArray<string> = []): string {
   if (number === 0) {
     return !words ? 'zero' : words.join(' ').replace(/,$/, '');
-  }
-  // First run
-  if (!words) {
-    words = [];
   }
   // If negative, prepend “minus”
   if (number < 0) {
