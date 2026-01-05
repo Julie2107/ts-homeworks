@@ -49,11 +49,11 @@ const TENTHS_LESS_THAN_HUNDRED: readonly string[] = [
   'ninety',
 ];
 
-function toWords(number: string, asOrdinal?: boolean): string {
+function toWords(number: string, asOrdinal?: boolean): string | number {
   var words;
   var num = parseInt(number, 10);
 
-  if (!isFinite(num)) {
+  if (!isFiniteCustom(num)) {
     throw new TypeError('Not a finite number: ' + number + ' (' + typeof number + ')');
   }
   if (!isSafeNumber(num)) {
