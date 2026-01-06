@@ -205,8 +205,9 @@ function isTypeUser(user) {
 fetch('https://dummyjson.com/users')
     .then((res) => res.json())
     .then((users) => {
-    if (users.every(isTypeUser)) {
+    if (users.users.every(isTypeUser)) {
         console.log('all users are valid');
+        console.log(users.users);
     }
     else {
         console.log('some users are invalid');
